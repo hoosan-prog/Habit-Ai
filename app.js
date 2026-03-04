@@ -6,7 +6,7 @@
 // Ma'lumotlar qatlami
 // ============================================
 
-const DEFAULT_API_KEY = '229a9e9d8e4f41e3af2cd43b57d0a73a.QrcnrKDeOTBBWhtY';
+const DEFAULT_API_KEY = '';
 
 const STORAGE_KEYS = {
     HABITS: 'habitai_habits',
@@ -1250,3 +1250,4 @@ document.addEventListener('DOMContentLoaded', init);
 window.handleToggle = handleToggle;
 window.openEditHabit = openEditHabit;
 window.confirmDeleteHabit = confirmDeleteHabit;
+
