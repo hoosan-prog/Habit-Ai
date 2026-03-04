@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="HabitAI - Sun'iy intellektli aqlli odat kuzatuvchisi. Yaxshi odatlar hosil qiling, rivojlanishingizni kuzating va shaxsiy maslahatlar oling.">
+    <meta name="keywords" content="odat kuzatuvchi, AI maslahatchi, samaradorlik, o'z-o'zini rivojlantirish">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>HabitAI — Aqlli Odat Kuzatuvchi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app" class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="url(#logoGrad)" stroke-width="2"
+                                fill="none" />
+                            <path d="M14 8L20 11V17L14 20L8 17V11L14 8Z" fill="url(#logoGrad2)" opacity="0.6" />
+                            <defs>
+                                <linearGradient id="logoGrad" x1="2" y1="2" x2="26" y2="26">
+                                    <stop stop-color="#6C63FF" />
+                                    <stop offset="1" stop-color="#FF6584" />
+                                </linearGradient>
+                                <linearGradient id="logoGrad2" x1="8" y1="8" x2="20" y2="20">
+                                    <stop stop-color="#6C63FF" />
+                                    <stop offset="1" stop-color="#FF6584" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Habit<span class="logo-accent">AI</span></span>
+                </div>
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Panelni yashirish">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <rect x="3" y="5" width="14" height="2" rx="1" />
+                        <rect x="3" y="9" width="14" height="2" rx="1" />
+                        <rect x="3" y="13" width="14" height="2" rx="1" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-view="dashboard" id="nav-dashboard">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <rect x="2" y="2" width="7" height="7" rx="2" />
+                        <rect x="11" y="2" width="7" height="7" rx="2" />
+                        <rect x="2" y="11" width="7" height="7" rx="2" />
+                        <rect x="11" y="11" width="7" height="7" rx="2" />
+                    </svg>
+                    <span>Boshqaruv paneli</span>
+                </button>
+                <button class="nav-item" data-view="habits" id="nav-habits">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M4 10L8 14L16 6" />
+                    </svg>
+                    <span>Odatlarim</span>
+                </button>
+                <button class="nav-item" data-view="calendar" id="nav-calendar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <rect x="2" y="4" width="16" height="14" rx="2" />
+                        <path d="M2 8H18" />
+                        <path d="M6 2V6" />
+                        <path d="M14 2V6" />
+                    </svg>
+                    <span>Kalendar</span>
+                </button>
+                <button class="nav-item" data-view="stats" id="nav-stats">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M2 18V12L6 8L10 12L14 4L18 8V18H2Z" />
+                    </svg>
+                    <span>Statistika</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="nav-item chatbot-btn" id="nav-chatbot" data-view="chatbot">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path
+                            d="M3 4C3 2.89543 3.89543 2 5 2H15C16.1046 2 17 2.89543 17 4V12C17 13.1046 16.1046 14 15 14H7L3 18V4Z" />
+                        <circle cx="7" cy="8" r="1" fill="currentColor" />
+                        <circle cx="10" cy="8" r="1" fill="currentColor" />
+                        <circle cx="13" cy="8" r="1" fill="currentColor" />
+                    </svg>
+                    <span>AI Maslahatchi</span>
+                    <div class="ai-badge">AI</div>
+                </button>
+
+                <button class="nav-item" id="settings-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <circle cx="10" cy="10" r="3" />
+                        <path
+                            d="M10 2V4M10 16V18M2 10H4M16 10H18M4.22 4.22L5.64 5.64M14.36 14.36L15.78 15.78M15.78 4.22L14.36 5.64M5.64 14.36L4.22 15.78" />
+                    </svg>
+                    <span>Sozlamalar</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menyuni ochish">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="3" y="6" width="18" height="2" rx="1" />
+                            <rect x="3" y="11" width="18" height="2" rx="1" />
+                            <rect x="3" y="16" width="18" height="2" rx="1" />
+                        </svg>
+                    </button>
+                    <div>
+                        <h1 id="page-title" class="page-title">Boshqaruv paneli</h1>
+                        <p id="page-subtitle" class="page-subtitle">Xush kelibsiz! Odatlaringiz umumiy ko'rinishi.</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="date-display" id="date-display"></div>
+                    <button id="add-habit-btn" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 2V14M2 8H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <span>Yangi odat</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view active">
+                <div class="stats-grid">
+                    <div class="stat-card" id="stat-total">
+                        <div class="stat-icon" style="--accent: #6C63FF;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2L22 8V16L12 22L2 16V8L12 2Z" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-total-value">0</span>
+                            <span class="stat-label">Jami odatlar</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="stat-completed">
+                        <div class="stat-icon" style="--accent: #00C9A7;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12L10 17L20 7" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-completed-value">0</span>
+                            <span class="stat-label">Bugun bajarilgan</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="stat-streak">
+                        <div class="stat-icon" style="--accent: #FF6584;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2C12 2 4 9 4 14C4 18.4183 7.58172 22 12 22C16.4183 22 20 18.4183 20 14C20 9 12 2 12 2Z" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-streak-value">0</span>
+                            <span class="stat-label">Eng yaxshi davomiylik</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="stat-rate">
+                        <div class="stat-icon" style="--accent: #FFD93D;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6V12L16 14" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-rate-value">0%</span>
+                            <span class="stat-label">Bajarilish darajasi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2>Bugungi odatlar</h2>
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="48" height="48">
+                            <circle class="progress-ring-bg" cx="24" cy="24" r="20" stroke-width="4" />
+                            <circle class="progress-ring-fill" id="daily-progress-ring" cx="24" cy="24" r="20"
+                                stroke-width="4" stroke-dasharray="125.66" stroke-dashoffset="125.66" />
+                        </svg>
+                        <span class="progress-ring-text" id="daily-progress-text">0%</span>
+                    </div>
+                </div>
+                <div id="today-habits-list" class="habits-list">
+                    <div class="empty-state" id="empty-dashboard">
+                        <div class="empty-icon">🎯</div>
+                        <h3>Hali odatlar yo'q</h3>
+                        <p>Bugun yaxshi odatlarni boshlang! "Yangi odat" tugmasini bosing.</p>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2>Haftalik ko'rinish</h2>
+                </div>
+                <div class="weekly-chart" id="weekly-chart"></div>
+            </section>
+
+            <!-- Habits View -->
+            <section id="view-habits" class="view">
+                <div class="habits-filter-bar">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">Hammasi</button>
+                        <button class="filter-tab" data-filter="health">🏃 Salomatlik</button>
+                        <button class="filter-tab" data-filter="productivity">💼 Samaradorlik</button>
+                        <button class="filter-tab" data-filter="mindfulness">🧘 Hushyorlik</button>
+                        <button class="filter-tab" data-filter="learning">📚 O'rganish</button>
+                        <button class="filter-tab" data-filter="social">👥 Ijtimoiy</button>
+                        <button class="filter-tab" data-filter="other">✨ Boshqa</button>
+                    </div>
+                </div>
+                <div id="all-habits-list" class="habits-grid">
+                    <div class="empty-state" id="empty-habits">
+                        <div class="empty-icon">📋</div>
+                        <h3>Odatlar topilmadi</h3>
+                        <p>Birinchi odatingizni yarating va sayohatni boshlang!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calendar View -->
+            <section id="view-calendar" class="view">
+                <div class="calendar-header">
+                    <button id="cal-prev" class="cal-nav-btn" aria-label="Oldingi oy">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 4L6 10L12 16" />
+                        </svg>
+                    </button>
+                    <h2 id="cal-month-year" class="cal-title"></h2>
+                    <button id="cal-next" class="cal-nav-btn" aria-label="Keyingi oy">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M8 4L14 10L8 16" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="cal-day-header">Dush</div>
+                    <div class="cal-day-header">Sesh</div>
+                    <div class="cal-day-header">Chor</div>
+                    <div class="cal-day-header">Pay</div>
+                    <div class="cal-day-header">Jum</div>
+                    <div class="cal-day-header">Shan</div>
+                    <div class="cal-day-header">Yak</div>
+                </div>
+                <div id="calendar-days" class="calendar-days"></div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><span class="legend-dot" style="background: var(--accent-muted);"></span>
+                        Odatsiz</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FF6584;"></span>
+                        < 50%</div>
+                            <div class="legend-item"><span class="legend-dot" style="background: #FFD93D;"></span>
+                                50-99%</div>
+                            <div class="legend-item"><span class="legend-dot" style="background: #00C9A7;"></span> 100%
+                            </div>
+                    </div>
+            </section>
+
+            <!-- Statistics View -->
+            <section id="view-stats" class="view">
+                <div class="stats-overview-grid">
+                    <div class="chart-card">
+                        <h3>Bajarilish xaritasi (Oxirgi 90 kun)</h3>
+                        <div id="heatmap-container" class="heatmap-container"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Odat davomiyligi</h3>
+                        <div id="streaks-list" class="streaks-list"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Kategoriya taqsimoti</h3>
+                        <div id="category-chart" class="category-chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Haftalik trend</h3>
+                        <div id="weekly-trend-chart" class="weekly-trend-chart"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Chatbot View -->
+            <section id="view-chatbot" class="view">
+                <div class="chatbot-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="chat-welcome">
+                            <div class="chat-welcome-icon">🤖</div>
+                            <h2>HabitAI Maslahatchi</h2>
+                            <p>Men sizning AI maslahatchi yordamchingizman! Odatlar haqida maslahat, motivatsiya yoki
+                                tavsiyalar so'rang.</p>
+                            <div class="chat-suggestions">
+                                <button class="suggestion-chip"
+                                    data-msg="Ertalabki odat tartibini qanday shakllantirsam bo'ladi?">🌅 Ertalabki
+                                    odat</button>
+                                <button class="suggestion-chip" data-msg="Yomon odatlarni qanday tashlash mumkin?">🔄
+                                    Yomon odatlarni tashlash</button>
+                                <button class="suggestion-chip"
+                                    data-msg="Bir kun o'tkazib yuborsam qanday motivatsiya topaman?">💪
+                                    Motivatsiya</button>
+                                <button class="suggestion-chip"
+                                    data-msg="Odatlarni birlashtirish strategiyasini bering">📚 Odatlarni
+                                    birlashtirish</button>
+                                <button class="suggestion-chip"
+                                    data-msg="Hozirgi odatlarimni tahlil qilib, yaxshilanish taklif qiling">📊
+                                    Odatlarimni tahlil qil</button>
+                                <button class="suggestion-chip"
+                                    data-msg="Samaradorlikni oshiradigan 5 ta foydali odat tavsiya qiling">🚀
+                                    Samaradorlik odatlari</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <div class="chat-input-wrapper">
+                            <textarea id="chat-input" class="chat-input"
+                                placeholder="AI Maslahatchiingizdan nimani bo'lsa so'rang..." rows="1"></textarea>
+                            <button id="chat-send-btn" class="chat-send-btn" aria-label="Xabar yuborish">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 10L18 2L14 10L18 18L2 10Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="chat-disclaimer">AI javoblari ma'lumot uchun. Gemini tomonidan quvvatlanadi.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Habit Modal -->
+    <div id="habit-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Yangi odat</h2>
+                <button id="modal-close" class="modal-close" aria-label="Yopish">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+                    </svg>
+                </button>
+            </div>
+            <form id="habit-form" class="habit-form">
+                <input type="hidden" id="habit-id">
+                <div class="form-group">
+                    <label for="habit-name">Odat nomi</label>
+                    <input type="text" id="habit-name" placeholder="masalan: 30 daqiqa kitob o'qish" required>
+                </div>
+                <div class="form-group">
+                    <label for="habit-description">Tavsif (ixtiyoriy)</label>
+                    <textarea id="habit-description" placeholder="Bu odat nima uchun muhim?" rows="2"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="habit-category">Kategoriya</label>
+                        <select id="habit-category">
+                            <option value="health">🏃 Salomatlik</option>
+                            <option value="productivity">💼 Samaradorlik</option>
+                            <option value="mindfulness">🧘 Hushyorlik</option>
+                            <option value="learning">📚 O'rganish</option>
+                            <option value="social">👥 Ijtimoiy</option>
+                            <option value="other">✨ Boshqa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="habit-frequency">Chastotasi</label>
+                        <select id="habit-frequency">
+                            <option value="daily">Har kuni</option>
+                            <option value="weekdays">Ish kunlari</option>
+                            <option value="weekends">Dam olish kunlari</option>
+                            <option value="custom">Maxsus</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="custom-days-group" style="display:none;">
+                    <label>Kunlarni tanlang</label>
+                    <div class="days-selector">
+                        <label class="day-check"><input type="checkbox" value="1"> Dush</label>
+                        <label class="day-check"><input type="checkbox" value="2"> Sesh</label>
+                        <label class="day-check"><input type="checkbox" value="3"> Chor</label>
+                        <label class="day-check"><input type="checkbox" value="4"> Pay</label>
+                        <label class="day-check"><input type="checkbox" value="5"> Jum</label>
+                        <label class="day-check"><input type="checkbox" value="6"> Shan</label>
+                        <label class="day-check"><input type="checkbox" value="0"> Yak</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rang</label>
+                    <div class="color-picker">
+                        <label class="color-option"><input type="radio" name="habit-color" value="#6C63FF" checked><span
+                                style="background: #6C63FF;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#FF6584"><span
+                                style="background: #FF6584;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#00C9A7"><span
+                                style="background: #00C9A7;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#FFD93D"><span
+                                style="background: #FFD93D;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#FF9A3C"><span
+                                style="background: #FF9A3C;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#4ECDC4"><span
+                                style="background: #4ECDC4;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#A78BFA"><span
+                                style="background: #A78BFA;"></span></label>
+                        <label class="color-option"><input type="radio" name="habit-color" value="#F472B6"><span
+                                style="background: #F472B6;"></span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="habit-reminder">Eslatma vaqti (ixtiyoriy)</label>
+                    <input type="time" id="habit-reminder">
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="modal-cancel" class="btn btn-secondary">Bekor qilish</button>
+                    <button type="submit" class="btn btn-primary">Saqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Sozlamalar</h2>
+                <button id="settings-close" class="modal-close" aria-label="Sozlamalarni yopish">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h3>AI API kalit</h3>
+                        <p>AI Maslahatchi uchun Gemini API kalitini kiriting.</p>
+                    </div>
+                    <input type="password" id="api-key-input" class="setting-input"
+                        placeholder="Gemini API kalitini kiriting">
+                    <a href="https://aistudio.google.com/apikey" target="_blank" class="api-link">Bepul API kalit olish
+                        →</a>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h3>Ma'lumotlarni eksport qilish</h3>
+                        <p>Barcha odat ma'lumotlarini JSON formatida yuklab oling.</p>
+                    </div>
+                    <button id="export-btn" class="btn btn-secondary">Eksport qilish</button>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h3>Ma'lumotlarni import qilish</h3>
+                        <p>JSON fayldan odat ma'lumotlarini tiklang.</p>
+                    </div>
+                    <input type="file" id="import-input" accept=".json" style="display:none;">
+                    <button id="import-btn" class="btn btn-secondary">Import qilish</button>
+                </div>
+                <div class="setting-item danger">
+                    <div class="setting-info">
+                        <h3>Barcha ma'lumotlarni o'chirish</h3>
+                        <p>Bu barcha odatlar va rivojlanishni butunlay o'chirib tashlaydi.</p>
+                    </div>
+                    <button id="reset-btn" class="btn btn-danger">Hammasini o'chirish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal-overlay">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2 id="confirm-title">Tasdiqlash</h2>
+            </div>
+            <p id="confirm-message" class="confirm-message"></p>
+            <div class="form-actions">
+                <button id="confirm-cancel" class="btn btn-secondary">Bekor qilish</button>
+                <button id="confirm-ok" class="btn btn-danger">Tasdiqlash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
